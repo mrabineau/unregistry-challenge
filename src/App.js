@@ -9,8 +9,18 @@ constructor(props){
   super(props);
   this.state = {
     domain: ['foodfighters.lol', 'selfdriving.cars', 'greendiamondsky.com'],
+    selected: null,
     price: ['12.00', '16.00', '9.00'],
    }
+
+   this.selectUrl = this.selectUrl.bind(this)
+
+}
+
+  selectUrl(index) {
+    if (index !== null) {
+      this.setState({selected: true})
+    }
   }
 
 
@@ -51,7 +61,8 @@ constructor(props){
                             <label for="checkbox1"></label>
                           </fieldset>
                       </td>
-                        <td><Link to="/form">{each[0]}</Link></td>
+                        <td><Link to="/form" onClick={() => this.selectUrl()}>{each[0]}</Link></td>
+                        {  }
                         <td>${price[0]}</td>
                   </tr>
               <tr>
@@ -88,6 +99,7 @@ constructor(props){
               </tr>
           </tbody>
         </table>
+        <Form domain={each}/>
     </div>
     );
   }
